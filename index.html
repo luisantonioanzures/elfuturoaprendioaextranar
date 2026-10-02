@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#10151b">
+  <meta name="description" content="El futuro aprendió a extrañar, de Luis Antonio. Lee el libro completo en línea.">
+  <meta property="og:title" content="El futuro aprendió a extrañar — Luis Antonio">
+  <meta property="og:description" content="Una edición digital para leer directamente en tu navegador.">
+  <meta property="og:type" content="book">
+  <title>El futuro aprendió a extrañar | Luis Antonio</title>
+  <style>
+    :root{--ink:#e9e9e4;--muted:#a7a9a9;--gold:#d5b37c;--line:rgba(255,255,255,.13);--bg:#10151b;--pane:#1b2228}
+    *{box-sizing:border-box}
+    html{min-height:100%;background:var(--bg)}
+    body{margin:0;min-height:100vh;min-height:100dvh;background:radial-gradient(ellipse at 74% 8%,#2b3137 0%,transparent 44%),linear-gradient(140deg,#161c23,#10151b 62%);color:var(--ink);font-family:system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;-webkit-font-smoothing:antialiased}
+    button,a{font:inherit}
+    button{cursor:pointer}
+    button:focus-visible,a:focus-visible{outline:2px solid var(--gold);outline-offset:4px}
+    .shell{min-height:100vh;min-height:100dvh;display:flex;flex-direction:column}
+    .site-header{width:100%;min-height:76px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:18px clamp(20px,5vw,72px);gap:18px}
+    .identity{text-decoration:none;color:var(--ink);font-size:11px;text-transform:uppercase;letter-spacing:.22em;font-weight:700;line-height:1.5}
+    .right-nav{display:flex;align-items:center;gap:18px}
+    .edition{font-size:10px;color:var(--muted);letter-spacing:.16em;text-transform:uppercase}
+    .share{border:1px solid var(--line);border-radius:99px;background:transparent;color:var(--ink);padding:9px 15px;font-size:12px;display:flex;align-items:center;gap:8px}
+    .share:hover{background:rgba(255,255,255,.07)}
+    .share svg{width:14px;height:14px}
+    main{flex:1;display:flex;align-items:center;justify-content:center}
+    .hero{width:min(1140px,100%);display:grid;grid-template-columns:minmax(280px,.91fr) 1.09fr;align-items:center;gap:clamp(42px,8vw,110px);padding:clamp(35px,6vw,72px) clamp(23px,6vw,78px)}
+    .cover-wrap{margin-inline:auto;width:min(330px,100%);filter:drop-shadow(17px 24px 27px rgba(0,0,0,.45));perspective:1100px}
+    .book-cover{position:relative;aspect-ratio:0.69;overflow:hidden;background:radial-gradient(circle at 54% 33%,rgba(207,187,160,.21),transparent 43%),linear-gradient(145deg,#596067,#292f37 43%,#121c24 92%);border-radius:2px 5px 5px 2px;box-shadow:inset 8px 0 13px rgba(0,0,0,.18),inset 1px 0 rgba(255,255,255,.26),3px 6px 0 #111820;display:flex;flex-direction:column;text-align:center;padding:10% 9% 9%;isolation:isolate}
+    .book-cover:before{content:'';position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,0,0,.22),transparent 8%,transparent 95%,rgba(0,0,0,.28));pointer-events:none;z-index:4}
+    .book-cover:after{content:'';position:absolute;inset:0;opacity:.13;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.5'/%3E%3C/svg%3E");pointer-events:none;z-index:1}
+    .cover-eyebrow{color:#e4dccf;font-size:9px;letter-spacing:.27em;text-transform:uppercase;z-index:2;margin-top:2px}
+    .cover-title{color:#fff6e6;font:normal clamp(28px,4.3vw,41px)/1.12 Georgia,'Times New Roman',serif;letter-spacing:-.025em;z-index:2;margin:25px 0 0;text-wrap:balance}
+    .cover-art{width:100%;position:absolute;left:0;bottom:12%;z-index:2;opacity:.88}
+    .cover-author{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:#f1e9dd;z-index:3;margin-top:auto}
+    .real-cover{position:absolute;inset:0;height:100%;width:100%;object-fit:cover;display:none;z-index:5}
+    .text-side{max-width:545px}
+    .kicker{color:var(--gold);font-size:11px;text-transform:uppercase;letter-spacing:.25em;font-weight:700}
+    h1{font:normal clamp(45px,6.2vw,85px)/1.04 Georgia,'Times New Roman',serif;letter-spacing:-.055em;margin:24px 0 26px;text-wrap:balance}
+    .rule{height:1px;width:55px;background:var(--gold);margin-bottom:25px}
+    .blurb{font-family:Georgia,'Times New Roman',serif;font-size:19px;line-height:1.7;color:#c0c2c2;max-width:455px;margin:0 0 28px}
+    .author{font-size:12px;text-transform:uppercase;letter-spacing:.22em;font-weight:650;color:#d7d9d6;margin-bottom:36px}
+    .cta{border:none;border-radius:3px;padding:17px 25px;background:var(--gold);color:#151820;font-size:12px;letter-spacing:.13em;text-transform:uppercase;font-weight:750;display:inline-flex;align-items:center;gap:24px;box-shadow:0 9px 23px rgba(0,0,0,.19);transition:background .15s,transform .15s}
+    .cta:hover{background:#e8ca99;transform:translateY(-1px)}
+    .cta .arrow{font-size:19px;line-height:.8}
+    .note{font-size:12px;line-height:1.6;color:#aeb0ac;margin:17px 0 0;max-width:460px}
+    .note:empty{display:none}
+    footer{display:flex;justify-content:space-between;gap:16px;padding:16px clamp(20px,5vw,72px);border-top:1px solid var(--line);font-size:10px;color:#8f9697;letter-spacing:.12em;text-transform:uppercase}
+    .reader{display:none;flex:1;min-height:0;flex-direction:column;width:100%}
+    .reader-top{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:13px clamp(16px,3vw,38px);border-bottom:1px solid var(--line);background:#161d24}
+    .reader-bookname{font:normal 15px/1.3 Georgia,serif;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:min(56vw,560px)}
+    .reader-toolbar{display:flex;align-items:center;gap:8px}
+    .tool{border:1px solid #47515a;background:#232d36;color:var(--ink);border-radius:6px;height:35px;min-width:35px;padding:0 11px;display:inline-flex;align-items:center;justify-content:center;font-size:13px}
+    .tool:hover:not(:disabled){background:#35424d}
+    .tool:disabled{cursor:default;opacity:.32}
+    .reader-stage{flex:1;min-height:420px;max-height:calc(100dvh - 205px);overflow:auto;padding:24px;display:flex;align-items:flex-start;justify-content:safe center;background:linear-gradient(45deg,#1a222a,#242d35)}
+    .page-surface{background:#fff;box-shadow:0 9px 38px rgba(0,0,0,.36);line-height:0;min-width:0}
+    #pdf-canvas{display:block;max-width:none}
+    .reader-bottom{display:flex;align-items:center;justify-content:center;gap:17px;background:#151d24;border-top:1px solid var(--line);padding:12px 16px}
+    .page-counter{min-width:100px;text-align:center;font-size:13px;font-variant-numeric:tabular-nums;color:#dde0df}
+    .zoom-label{font-size:11px;color:var(--muted);min-width:38px;text-align:center}
+    .hidden{display:none!important}
+    .loading{font-size:14px;color:#e1d5bf;line-height:1.5;margin:0 0 18px}
+    @media(max-width:760px){.site-header{min-height:66px}.identity{font-size:10px;max-width:52vw}.edition{display:none}.hero{grid-template-columns:1fr;gap:41px;padding-top:45px;padding-bottom:52px}.cover-wrap{width:min(270px,67vw)}.book-cover .cover-title{font-size:34px}.text-side{text-align:center;margin:auto}.text-side h1{font-size:clamp(43px,9vw,63px);margin:16px 0 21px}.rule{margin-inline:auto}.blurb{font-size:17px;margin-bottom:20px}.author{margin-bottom:29px}.right-nav{gap:10px}footer{flex-direction:column;align-items:center;text-align:center;gap:7px}.reader-top{padding:10px 14px}.reader-bookname{font-size:13px;max-width:50vw}.reader-stage{padding:14px;max-height:calc(100dvh - 180px)}.reader-toolbar{gap:4px}.tool{padding:0 8px;min-width:33px}.reader-bottom{gap:9px;padding:9px}.zoom-label{min-width:32px}}
+    @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <header class="site-header">
+      <a class="identity" href="#inicio" id="brand" aria-label="Ir a la portada">Luis Antonio <span style="color:#d5b37c">/</span> Biblioteca</a>
+      <div class="right-nav">
+        <span class="edition">Edición digital · Lectura en línea</span>
+        <button class="share" id="share-button" type="button" aria-label="Compartir enlace">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.8 10.6 6.4-4.2M8.8 13.4l6.4 4.2"/></svg>
+          <span id="share-label">Compartir</span>
+        </button>
+      </div>
+    </header>
+
+    <main id="home">
+      <section class="hero" aria-labelledby="book-title">
+        <div class="cover-wrap">
+          <div class="book-cover" aria-label="Portada ilustrativa del libro">
+            <div class="cover-eyebrow">Edición digital</div>
+            <div class="cover-title">El futuro<br>aprendió<br>a extrañar</div>
+            <svg class="cover-art" viewBox="0 0 320 260" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M23 229c31-26 72-40 134-37 65 2 105 21 140 37" stroke="#a3a5a2" stroke-opacity=".3"/>
+              <path d="M116 207v-80c0-8 8-15 19-15h49c12 0 18 7 18 15v80M113 174h94M127 174v49M194 174v49M110 196h99" stroke="#e4ddd1" stroke-opacity=".64" stroke-width="6" stroke-linecap="round"/>
+              <path d="M138 119c12-7 37-7 51 0" stroke="#e4ddd1" stroke-opacity=".54" stroke-width="4" stroke-linecap="round"/>
+              <path d="M182 78c11-13 21-15 32-7 7-12 18-15 31-10M100 56c-13-8-22-8-32 1-6-11-15-15-27-12" stroke="#ddd1c0" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M69 251c35-16 141-21 187-4" stroke="#dfd4c4" stroke-opacity=".25"/>
+            </svg>
+            <div class="cover-author">Luis Antonio</div>
+            <img class="real-cover" id="real-cover" src="./portada.jpg" alt="Portada original de El futuro aprendió a extrañar" onload="this.style.display='block'" onerror="this.remove()">
+          </div>
+        </div>
+        <div class="text-side">
+          <div class="kicker">Un libro de Luis Antonio</div>
+          <h1 id="book-title">El futuro aprendió a extrañar</h1>
+          <div class="rule"></div>
+          <p class="blurb">Un espacio para encontrarnos con las palabras, una página a la vez.</p>
+          <div class="author">Edición de lectura digital</div>
+          <p class="loading hidden" id="loading-message" role="status">Preparando el lector…</p>
+          <button class="cta" id="read-button" type="button">Comenzar lectura <span class="arrow" aria-hidden="true">→</span></button>
+          <p class="note" id="status-message" role="status" aria-live="polite"></p>
+        </div>
+      </section>
+    </main>
+
+    <section id="reader" class="reader" aria-label="Lector del libro">
+      <div class="reader-top">
+        <span class="reader-bookname">El futuro aprendió a extrañar</span>
+        <div class="reader-toolbar">
+          <button class="tool" id="back-button" type="button" aria-label="Volver a portada" title="Volver a portada">✕</button>
+          <button class="tool" id="open-pdf" type="button" aria-label="Abrir archivo PDF" title="Abrir PDF en otra pestaña">↗</button>
+        </div>
+      </div>
+      <div class="reader-stage" id="reader-stage" tabindex="0" aria-label="Página del libro">
+        <div class="page-surface"><canvas id="pdf-canvas" aria-label="Página actual del PDF"></canvas></div>
+      </div>
+      <div class="reader-bottom">
+        <button class="tool" id="prev-button" aria-label="Página anterior" title="Página anterior">←</button>
+        <span class="page-counter" id="page-counter" aria-live="polite">— / —</span>
+        <button class="tool" id="next-button" aria-label="Página siguiente" title="Página siguiente">→</button>
+        <span aria-hidden="true" style="width:1px;height:23px;background:rgba(255,255,255,.2);margin:0 3px"></span>
+        <button class="tool" id="zoom-out" aria-label="Reducir tamaño" title="Reducir tamaño">−</button>
+        <span class="zoom-label" id="zoom-label">100%</span>
+        <button class="tool" id="zoom-in" aria-label="Aumentar tamaño" title="Aumentar tamaño">+</button>
+      </div>
+    </section>
+
+    <footer id="footer"><span>El futuro aprendió a extrañar</span><span>© <span id="year"></span> Luis Antonio · Todos los derechos reservados</span></footer>
+  </div>
+  <script type="module">
+    const pdfUrl = './libro.pdf';
+    const el = id => document.getElementById(id);
+    el('year').textContent = new Date().getFullYear();
+    let pdf = null, pdfjs = null, currentPage = 1, zoom = 1, busy = false, rerender = false;
+    const readButton = el('read-button');
+    const status = el('status-message');
+    const canvas = el('pdf-canvas');
+    const stage = el('reader-stage');
+
+    function updateNavigation() {
+      el('page-counter').textContent = pdf ? `${currentPage} / ${pdf.numPages}` : '— / —';
+      el('prev-button').disabled = !pdf || currentPage <= 1;
+      el('next-button').disabled = !pdf || currentPage >= pdf.numPages;
+      el('zoom-out').disabled = zoom <= 0.65;
+      el('zoom-in').disabled = zoom >= 2;
+      el('zoom-label').textContent = `${Math.round(zoom * 100)}%`;
+    }
+    updateNavigation();
+
+    async function loadBook() {
+      readButton.disabled = true;
+      el('loading-message').classList.remove('hidden');
+      status.textContent = '';
+      try {
+        // El PDF es un archivo público que debe estar junto a index.html.
+        const check = await fetch(pdfUrl, { method: 'HEAD', cache: 'no-store' });
+        if (!check.ok) throw new Error('NO_PDF');
+        pdfjs = await import('https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.10.38/pdf.min.mjs');
+        pdfjs.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.10.38/pdf.worker.min.mjs';
+        pdf = await pdfjs.getDocument({ url: pdfUrl }).promise;
+        currentPage = 1;
+        zoom = 1;
+        showReader();
+        await requestRender();
+      } catch (error) {
+        console.warn('No se pudo abrir el PDF:', error);
+        status.textContent = error.message === 'NO_PDF'
+          ? 'La página está lista. Para activar la lectura, sube tu libro en PDF con el nombre exacto «libro.pdf» al mismo repositorio.'
+          : 'No se pudo abrir el libro. Comprueba que «libro.pdf» sea un PDF válido y que tengas conexión a internet.';
+      } finally {
+        readButton.disabled = false;
+        el('loading-message').classList.add('hidden');
+      }
+    }
+
+    function showReader() {
+      el('home').classList.add('hidden');
+      el('footer').classList.add('hidden');
+      el('reader').style.display = 'flex';
+      location.hash = 'leer';
+      updateNavigation();
+    }
+    function showCover() {
+      el('reader').style.display = 'none';
+      el('home').classList.remove('hidden');
+      el('footer').classList.remove('hidden');
+      history.replaceState(null, '', location.pathname + location.search);
+    }
+
+    async function requestRender() {
+      if (!pdf) return;
+      if (busy) { rerender = true; return; }
+      busy = true;
+      try {
+        do {
+          rerender = false;
+          const page = await pdf.getPage(currentPage);
+          const base = page.getViewport({ scale: 1 });
+          const room = Math.max(180, stage.clientWidth - (innerWidth < 760 ? 28 : 50));
+          const fit = room / base.width;
+          const viewport = page.getViewport({ scale: fit * zoom });
+          const dpr = Math.min(devicePixelRatio || 1, 2.2);
+          const ctx = canvas.getContext('2d', { alpha: false });
+          canvas.width = Math.round(viewport.width * dpr);
+          canvas.height = Math.round(viewport.height * dpr);
+          canvas.style.width = `${viewport.width}px`;
+          canvas.style.height = `${viewport.height}px`;
+          await page.render({ canvasContext: ctx, viewport, transform: [dpr,0,0,dpr,0,0] }).promise;
+          updateNavigation();
+        } while (rerender);
+      } catch (err) {
+        console.error('Error al dibujar página:', err);
+        alert('No se pudo mostrar esta página del libro. Puedes intentar abrir el PDF con ↗.');
+      } finally { busy = false; }
+    }
+    function switchPage(delta) {
+      if (!pdf) return;
+      const next = Math.max(1, Math.min(pdf.numPages, currentPage + delta));
+      if (next === currentPage) return;
+      currentPage = next;
+      stage.scrollTop = 0;
+      stage.scrollLeft = 0;
+      updateNavigation();
+      requestRender();
+    }
+    function setZoom(delta) {
+      const next = Math.round(Math.max(.65, Math.min(2, zoom + delta)) * 100) / 100;
+      if (next === zoom) return;
+      zoom = next;
+      updateNavigation();
+      requestRender();
+    }
+    readButton.addEventListener('click', () => pdf ? (showReader(), requestRender()) : loadBook());
+    el('back-button').addEventListener('click', showCover);
+    el('brand').addEventListener('click', (event) => { event.preventDefault(); showCover(); });
+    el('open-pdf').addEventListener('click', () => window.open(pdfUrl, '_blank', 'noopener,noreferrer'));
+    el('prev-button').addEventListener('click', () => switchPage(-1));
+    el('next-button').addEventListener('click', () => switchPage(1));
+    el('zoom-out').addEventListener('click', () => setZoom(-.15));
+    el('zoom-in').addEventListener('click', () => setZoom(.15));
+    document.addEventListener('keydown', event => {
+      if (el('reader').style.display !== 'flex') return;
+      if (event.key === 'ArrowRight' || event.key === 'PageDown') { event.preventDefault(); switchPage(1); }
+      if (event.key === 'ArrowLeft' || event.key === 'PageUp') { event.preventDefault(); switchPage(-1); }
+      if (event.key === 'Escape') showCover();
+    });
+    let resizeTimer;
+    window.addEventListener('resize', () => { clearTimeout(resizeTimer); resizeTimer = setTimeout(() => { if (el('reader').style.display === 'flex') requestRender(); }, 200); });
+    el('share-button').addEventListener('click', async () => {
+      const title = 'El futuro aprendió a extrañar';
+      const url = location.href.split('#')[0];
+      try {
+        if (navigator.share) await navigator.share({ title, url });
+        else if (navigator.clipboard) { await navigator.clipboard.writeText(url); el('share-label').textContent = 'Enlace copiado'; setTimeout(() => el('share-label').textContent = 'Compartir', 2200); }
+        else prompt('Copia el enlace de tu libro:', url);
+      } catch (e) { if (e.name !== 'AbortError') prompt('Copia el enlace de tu libro:', url); }
+    });
+    // Se muestra la portada al entrar; el visitante pulsa "Comenzar lectura".
+  </script>
+</body>
+</html>
