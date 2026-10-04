@@ -1,0 +1,52 @@
+name: Publicar libro digital
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: publicar-libro-digital
+  cancel-in-progress: false
+
+jobs:
+  publicar:
+    runs-on: ubuntu-latest
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - name: Descargar proyecto
+        uses: actions/checkout@v4
+
+      - name: Preparar GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: Convertir cambios del editor en EPUB
+        run: python3 scripts/construir_epub.py
+
+      - name: Preparar web pública
+        run: |
+          mkdir -p public/edit
+          cp index.html public/index.html
+          cp portada.jpg public/portada.jpg
+          cp libro.epub public/libro.epub
+          cp edit/index.html public/edit/index.html
+          touch public/.nojekyll
+
+      - name: Subir web
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: public
+
+      - name: Publicar web
+        id: deployment
+        uses: actions/deploy-pages@v4
