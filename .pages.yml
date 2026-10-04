@@ -1,0 +1,49 @@
+media:
+  input: archivos
+  output: /archivos
+
+content:
+  - name: libro
+    label: El futuro aprendió a extrañar
+    type: file
+    path: contenido.json
+    format: json
+    fields:
+      - name: dedicatoria
+        label: Dedicatoria
+        type: rich-text
+        options:
+          format: html
+          media: false
+
+      - name: nota
+        label: Nota del autor
+        type: rich-text
+        options:
+          format: html
+          media: false
+
+      - name: capitulos
+        label: Capítulos
+        type: object
+        list:
+          min: 1
+          collapsible:
+            collapsed: true
+            summary: "{titulo}"
+        fields:
+          - name: titulo
+            label: Nombre del capítulo
+            type: string
+            required: true
+
+          - name: contenido
+            label: Texto del capítulo
+            type: rich-text
+            options:
+              format: html
+              media: false
+
+settings:
+  content:
+    merge: true
